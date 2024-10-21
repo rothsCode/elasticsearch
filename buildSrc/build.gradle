@@ -26,6 +26,7 @@ plugins {
   id 'java-test-fixtures'
 }
 
+
 group = 'org.elasticsearch.gradle'
 
 String minimumGradleVersion = file('src/main/resources/minimumGradleVersion').text.trim()
@@ -83,7 +84,10 @@ tasks.withType(JavaCompile).configureEach {
  *****************************************************************************/
 
 repositories {
-  jcenter()
+  maven {url 'https://maven.aliyun.com/nexus/content/groups/public' }
+  maven { url 'https://maven.aliyun.com/repository/central' }
+  maven { url 'https://maven.aliyun.com/repository/google' }
+  maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
 }
 
 dependencies {
@@ -148,6 +152,10 @@ if (project != rootProject) {
   allprojects {
     targetCompatibility = 10
     sourceCompatibility = 10
+    repositories {
+      maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/'}
+      maven{ url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    }
   }
 
   // groovydoc succeeds, but has some weird internal exception...

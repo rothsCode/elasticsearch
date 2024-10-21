@@ -3,6 +3,10 @@ import com.bettercloud.vault.Vault;
 
 initscript {
   repositories {
+    //设置阿里云镜像仓库
+    maven("https://maven.aliyun.com/repository/public/")
+    maven("https://maven.aliyun.com/repository/gradle-plugin") //由于Gradle有许多自己的插件,比如clean,build插件等等
+    mavenLocal()
     mavenCentral()
   }
   dependencies {
